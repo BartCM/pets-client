@@ -9,7 +9,7 @@ async function showAllPetsOnConsole(): Promise<void> {
 
     console.log("Listado completo de pets:");
     pets.forEach((pet) => {
-      console.log(pet.name);
+      console.log(pet.name, pet.age, pet.species);
     });
 
   } catch (error) {
