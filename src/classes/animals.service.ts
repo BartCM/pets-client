@@ -1,6 +1,7 @@
 import { Http } from "../classes/http.class";
 import { SERVER_BASE_URL } from "../classes/constante";
 import type { Animals } from "../interfaces/animals";
+import type { Animal } from "../interfaces/animal";
 
 export class AnimalService {
   #http = new Http();
@@ -12,8 +13,8 @@ export class AnimalService {
     return res.animals;
   }
 
-  async create(data: { name: string; species: string; age: string }): Promise<Animals> {
-    const res = await this.#http.post<{ present: Animals }, typeof data>(
+  async create(data: { name: string; species: string; age: string }): Promise<Animal> {
+    const res = await this.#http.post<{ present: Animal }, typeof data>(
       `${SERVER_BASE_URL}/animals`,
       data
     );
