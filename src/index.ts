@@ -62,7 +62,6 @@ async function añadirNuevoAnimal(event: Event): Promise<void> {
 
   try {
     const nuevoAnimal = await animalService.create(animal);
-    console.log("animal creado:", nuevoAnimal);
     insertarAnimal(nuevoAnimal);
 
     form.reset();
