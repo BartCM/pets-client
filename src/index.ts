@@ -11,6 +11,7 @@ async function showAllPetsOnConsole(): Promise<void> {
     contador.textContent = `${pets.length} animals`;
 
     pets.forEach(insertarAnimal);
+
   } catch (error) {
     console.error("Error obteniendo pets:", error);
   }
@@ -36,7 +37,7 @@ function insertarAnimal(pet: Animal): void {
     async () => {
       try {
         await animalService.delete(pet.id);
-        location.reload();
+        tr.remove();
       } catch (error) {
         console.error("Error borrando animal:", error);
       }
@@ -60,9 +61,11 @@ async function añadirNuevoAnimal(event: Event): Promise<void> {
   };
 
   try {
-    await animalService.create(animal);
+    const nuevoAnimal = await animalService.create(animal);
+    console.log("animal creado:", nuevoAnimal);
+    insertarAnimal(nuevoAnimal);
 
-    location.reload();
+    form.reset();
 
   } catch (error) {
     console.error("Error creando animal:", error);

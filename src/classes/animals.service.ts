@@ -14,12 +14,12 @@ export class AnimalService {
   }
 
   async create(data: { name: string; species: string; age: string }): Promise<Animal> {
-    const res = await this.#http.post<{ present: Animal }, typeof data>(
+    const res = await this.#http.post<{ animal: Animal }, typeof data>(
       `${SERVER_BASE_URL}/animals`,
       data
     );
 
-    return res.present;
+    return res.animal;
   }
 
   async delete(id: number): Promise<void> {
